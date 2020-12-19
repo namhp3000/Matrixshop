@@ -14,6 +14,7 @@ var controllerPro = require("./controllers/controller-product")
 var controllerOrder = require("./controllers/controller-order")
 var controller_session = require("./controllers/session");
 app.set('trust proxy', 1) // trust first proxy
+var PORT = process.env.PORT || 3000;
 
 app.use(cookieSession({
   name: 'session',
@@ -29,8 +30,8 @@ app.use(controller_session)
 app.use(flash());
 
 app.set("view engine", "ejs");
-app.set("views", "./views")
-app.set('port', process.env.PORT || 3000);
+app.set("views", "./views");
+app.listen(PORT);
 
 //connect mongoosejs
 var mongoose = require('mongoose');
